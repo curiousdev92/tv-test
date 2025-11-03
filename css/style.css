@@ -27,6 +27,11 @@ button {
   border: none;
 }
 
+img {
+  height: auto;
+  max-width: 100%;
+}
+
 #app {
   display: flex;
   width: 100%;
@@ -84,7 +89,6 @@ main {
 /* Meals */
 .meals {
   border-radius: 16px;
-  background-color: aliceblue;
   min-height: 100px;
   margin-bottom: 40px;
   min-width: 629px;
@@ -124,21 +128,6 @@ main {
   height: 320px;
   border-radius: 16px;
   background-color: #00000071;
-}
-.quick-foods > article.recipe-card {
-  min-width: 240px;
-  height: 320px;
-  border-radius: 16px;
-  z-index: 1;
-  position: relative;
-  overflow: hidden;
-}
-.quick-foods > article > img {
-  position: absolute;
-  z-index: -1;
-}
-
-.quick-foods > .loading {
   display: flex;
 }
 .quick-foods.loaded > .loading {
@@ -151,8 +140,73 @@ main {
   z-index: 1;
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
-.quick-foods > article > img {
+
+/* Banners */
+.banners {
+  display: flex;
+  max-width: 100%;
+  margin-bottom: 40px;
+}
+.banners .banners-recipe {
+  margin-left: 24px;
+}
+
+/* Suggestions */
+.suggestions {
+  border-radius: 16px;
+  background-color: #f4f4f5;
+  min-height: 432px;
+  margin-bottom: 40px;
+  padding: 24px;
+}
+.suggestions > .suggestions-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 36px;
+  padding-right: 10px;
+  position: relative;
+}
+.suggestions > .suggestions-title::before {
+  content: "";
+  width: 4px;
+  height: 100%;
+  background-color: #298432;
+  margin-left: 6px;
   position: absolute;
-  z-index: -1;
+  right: 0;
+  border-radius: 8px;
+}
+.suggestions > .suggestions-cards {
+  display: flex;
+  overflow-x: auto;
+  height: 320px;
+  margin-top: 24px;
+}
+.suggestions .loading:not(:last-child),
+.suggestions article:not(:last-child) {
+  margin-left: 16px;
+}
+.suggestions .loading {
+  min-width: 240px;
+  height: 320px;
+  border-radius: 16px;
+  background-color: #00000071;
+  display: flex;
+}
+.suggestions.loaded .loading {
+  display: none;
+}
+
+.suggestions > .suggestions-cards > article {
+  min-width: 240px;
+  height: 320px;
+  border-radius: 16px;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }

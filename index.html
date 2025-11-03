@@ -2,14 +2,32 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>حس تازگی - تلویزیون</title>
-    <link rel="stylesheet" crossorigin href="./assets/index-BLx_rOj2.css" />
+    <title>TV App</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/font-face.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <aside class="sidebar">
+        <div class="nav-item logo">
+          <img
+            src="/images/logo-title-slogan.svg"
+            alt="hesetazegi logo"
+            width="82"
+            height="101.02"
+          />
+        </div>
+        <nav>
+          <button data-route="#/home" class="nav-link" tabindex="0">دستورپخت</button>
+          <button data-route="#/cooking-assistant" class="nav-link" tabindex="0">چی بپزم</button>
+          <button data-route="#/profile" class="nav-link" tabindex="0">حساب من</button>
+        </nav>
+      </aside>
+      <main id="main-content"></main>
+    </div>
 
-    <script src="./assets/main.js"></script>
+    <script src="js/dpad.js" defer></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>

@@ -22,16 +22,19 @@
       function (data) {
         if (data.statusCode === 200 && data && data.data && data.data.records) {
           quickFoodsSection.classList.add("loaded");
+          quickFoodsSection.textContent = "";
+          var img = document.createElement("img");
+          img.src = "images/home/quick-foods-banner.png";
+          img.width = 204.32;
+          img.height = 320;
+          quickFoodsSection.appendChild(img);
+
           var recipes = data.data.records;
           for (var i = 0; i < recipes.length; i++) {
             var recipe = recipes[i];
             var article = document.createElement("article");
             article.style.backgroundImage = `url(${recipe.image.src})`;
-            // var img = document.createElement("img");
-            // img.src = recipe.image.src;
-            // img.alt = recipe.image.alt;
-            // img.width = 240;
-            // img.height = 320;
+
             // var p = document.createElement("p");
             // p.textContent = recipe.title;
             if (recipe.isPremium) article.classList.add("premium");
@@ -55,22 +58,13 @@
           suggestionsSection.classList.add("loaded");
           var suggestionsCardsContainer =
             suggestionsSection.getElementsByClassName("suggestions-cards")[0];
-          console.log(suggestionsCardsContainer);
+          suggestionsCardsContainer.textContent = "";
           var recipes = data.data.records;
           for (var i = 0; i < recipes.length; i++) {
             var recipe = recipes[i];
             var article = document.createElement("article");
             article.style.backgroundImage = `url(${recipe.image.src})`;
-            // var img = document.createElement("img");
-            // img.src = recipe.image.src;
-            // img.alt = recipe.image.alt;
-            // img.width = 240;
-            // img.height = 320;
-            // var p = document.createElement("p");
-            // p.textContent = recipe.title;
             if (recipe.isPremium) article.classList.add("premium");
-            // article.appendChild(img);
-            // article.appendChild(p);
             suggestionsCardsContainer.appendChild(article);
           }
         }
@@ -90,6 +84,10 @@
         links[i].classList.remove("focused");
       }
     }
+  }
+
+  function clearLoadings(parent) {
+    parent.querySelectorAll(".loading").forEach((el) => el.remove());
   }
 
   function getJSON(url, callback, errorCallback) {

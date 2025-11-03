@@ -199,7 +199,6 @@ main {
 .suggestions.loaded .loading {
   display: none;
 }
-
 .suggestions > .suggestions-cards > article {
   min-width: 240px;
   height: 320px;
@@ -209,4 +208,15 @@ main {
   overflow: hidden;
   background-size: cover;
   background-position: center;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+}
+.categories > article > img {
+  border-radius: 16px;
+}
+.categories > article:not(:last-child) {
+  margin-left: 24px;
 }

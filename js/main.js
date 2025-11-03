@@ -9,10 +9,6 @@
   function renderRoute() {
     var hash = window.location.hash || "#/home";
     var route = hash.replace("#", "") || "/";
-    if (route === "/" || route === "/home") {
-      loadquickFoods("filter=tg-fast&srt=srt-random&page=1&limit=5");
-      loadSuggestions("srt=srt-variety&limit=13");
-    }
     updateNavFocus(hash);
   }
 
@@ -123,6 +119,9 @@
 
   // Initial load
   renderRoute();
+  loadquickFoods("filter=tg-fast&srt=srt-random&page=1&limit=5");
+  loadSuggestions("srt=srt-variety&limit=13");
+  console.log("hi");
 
   // Api calls
 })();

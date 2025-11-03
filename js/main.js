@@ -1,22 +1,49 @@
 (function () {
-  // Basic routing setup
-  var routes = {
-    "#/home": "<h1>Home</h1>",
-    "#/cooking-assistant": "<h1>Cooking Assistant</h1>",
-    "#/profile": "<h1>Profile</h1>",
-  };
-
-  var main = document.getElementById("main-content");
+  var homePageElement = document.getElementById("home");
+  var cookingAssistantPageElement = document.getElementById("cooking-assistant");
+  var profilePageElement = document.getElementById("profile");
+  var quickFoodsSection = document.getElementById("home-quick-foods");
+  var locale = "fa";
 
   function renderRoute() {
-    console.log("rendered");
     var hash = window.location.hash || "#/home";
-    if (routes[hash]) {
-      main.innerHTML = routes[hash];
-    } else {
-      main.innerHTML = "<h1>404 - Not Found</h1>";
+    var route = hash.replace("#", "") || "/";
+    if (route === "/" || route === "/home") {
+      loadRecipes("filter=tg-fast&srt=srt-random&page=1&limit=5");
     }
     updateNavFocus(hash);
+  }
+
+  function loadRecipes(search) {
+    var mealsSection = document.querySelector(".meals");
+
+    getJSON(
+      `https://apis8.hesetazegi.com/api/Recipe/list/${locale}?${search}`,
+      function (data) {
+        if (data.statusCode === 200 && data && data.data && data.data.records) {
+          quickFoodsSection.classList.add("loaded");
+          var recipes = data.data.records;
+          for (var i = 0; i < recipes.length; i++) {
+            var recipe = recipes[i];
+            var article = document.createElement("article");
+            var img = document.createElement("img");
+            img.src = recipe.image.src;
+            img.alt = recipe.image.alt;
+            img.width = 240;
+            img.height = 320;
+            // var p = document.createElement("p");
+            // p.textContent = recipe.title;
+            if (recipe.isPremium) article.classList.add("premium");
+            article.appendChild(img);
+            // article.appendChild(p);
+            quickFoodsSection.appendChild(article);
+          }
+        }
+      },
+      function (err) {
+        console.log("Failed to load recipes:", err);
+      }
+    );
   }
 
   function updateNavFocus(activeHash) {
@@ -28,6 +55,26 @@
         links[i].classList.remove("focused");
       }
     }
+  }
+
+  function getJSON(url, callback, errorCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            var data = JSON.parse(xhr.responseText);
+            callback(data);
+          } catch (err) {
+            if (errorCallback) errorCallback(err);
+          }
+        } else {
+          if (errorCallback) errorCallback(new Error("Request failed: " + xhr.status));
+        }
+      }
+    };
+    xhr.send();
   }
 
   // Event listeners
@@ -43,4 +90,6 @@
 
   // Initial load
   renderRoute();
+
+  // Api calls
 })();

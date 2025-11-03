@@ -19,12 +19,54 @@
           />
         </div>
         <nav>
-          <button data-route="#/home" class="nav-link" tabindex="0">دستورپخت</button>
-          <button data-route="#/cooking-assistant" class="nav-link" tabindex="0">چی بپزم</button>
-          <button data-route="#/profile" class="nav-link" tabindex="0">حساب من</button>
+          <button data-route="#/home" class="nav-link selectable" id="active-item">دستورپخت</button>
+          <button data-route="#/cooking-assistant" class="nav-link selectable">چی بپزم</button>
+          <button data-route="#/profile" class="nav-link selectable">حساب من</button>
         </nav>
       </aside>
-      <main id="main-content"></main>
+
+      <!-- Home page -->
+      <main id="home" class="page-element">
+        <!-- Meals -->
+        <section class="meals">
+          <article class="selectable">
+            <img src="/images/home/breakfast.png" alt="صبحانه" width="100" height="100" />
+            <p>صبحانه</p>
+          </article>
+          <article class="selectable">
+            <img src="/images/home/lunch.png" alt="ناهار" width="100" height="100" />
+            <p>ناهار</p>
+          </article>
+          <article class="selectable">
+            <img src="/images/home/dinner.png" alt="شام" width="100" height="100" />
+            <p>شام</p>
+          </article>
+          <article class="selectable">
+            <img src="/images/home/snack.png" alt="میان‌وعده" width="100" height="100" />
+            <p>میان‌وعده</p>
+          </article>
+          <article class="selectable">
+            <img src="/images/home/all-meals.png" alt="همه وعده‌ها" width="100" height="100" />
+            <p>همه وعده‌ها</p>
+          </article>
+        </section>
+
+        <!-- Quick foods -->
+        <section class="quick-foods" id="home-quick-foods">
+          <img src="images/home/quick-foods-banner.png" alt="banner" width="204.32" height="320" />
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+          <div class="loading"></div>
+        </section>
+      </main>
+
+      <!-- Cooking Assistant Page -->
+      <main id="cooking-assistant" class="page-element" hidden></main>
+
+      <!-- Profile Page -->
+      <main id="profile" class="page-element" hidden></main>
     </div>
 
     <script src="js/dpad.js" defer></script>

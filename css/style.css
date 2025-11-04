@@ -13,7 +13,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   outline: none;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 body {
@@ -95,7 +95,7 @@ main {
 /* Top Slider */
 .slider {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   margin-bottom: 40px;
   position: relative;
 }
@@ -162,6 +162,15 @@ main {
 .meals > article {
   margin-left: 32px;
 }
+.meals img {
+  border-radius: 200px;
+}
+.meals > .selectable#active-item {
+  border: none;
+}
+.meals > .selectable#active-item > img {
+  border: 4px solid #fb7f05;
+}
 
 /* Quick foods */
 .quick-foods {
@@ -171,7 +180,7 @@ main {
   margin-bottom: 40px;
   padding: 24px;
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 .quick-foods > img {
   margin-left: 16px;
@@ -226,6 +235,9 @@ main {
   margin-left: 24px;
   border-radius: 16px;
 }
+.banners .banners-cooking-assistant {
+  border-radius: 16px;
+}
 .banners img {
   border-radius: 12px;
   display: block;
@@ -258,7 +270,7 @@ main {
 }
 .suggestions > .suggestions-cards {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   height: 320px;
   margin-top: 24px;
 }
@@ -291,8 +303,12 @@ main {
 .categories {
   display: flex;
 }
-.categories > article > img {
+.categories > article {
   border-radius: 16px;
+}
+.categories > article > img {
+  border-radius: 12px;
+  display: block;
 }
 .categories > article:not(:last-child) {
   margin-left: 24px;

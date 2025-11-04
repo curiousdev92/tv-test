@@ -7,7 +7,6 @@
 
   document.addEventListener("keydown", function (e) {
     var key = e.keyCode;
-    var currentActiveEle = document.querySelector("#active-item");
     if (!currentActiveEle) return; // If no active element, exit
 
     var currentRow = currentActiveEle.closest(".selectableRow");
@@ -21,10 +20,13 @@
         currentActiveEle.previousElementSibling.classList.contains("selectable")
       ) {
         currentActiveEle.removeAttribute("id");
-        currentActiveEle.removeAttribute("tabindex");
         currentActiveEle.previousElementSibling.setAttribute("id", "active-item");
-        currentActiveEle.previousElementSibling.setAttribute("tabindex", "0");
         currentActiveEle.previousElementSibling.focus();
+        currentActiveEle.previousElementSibling.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
         currentActiveEle = currentActiveEle.previousElementSibling;
       }
     } else if (key === 38) {
@@ -37,10 +39,13 @@
         currentActiveEle.nextElementSibling.classList.contains("selectable")
       ) {
         currentActiveEle.removeAttribute("id");
-        currentActiveEle.removeAttribute("tabindex");
         currentActiveEle.nextElementSibling.setAttribute("id", "active-item");
-        currentActiveEle.nextElementSibling.setAttribute("tabindex", "0");
         currentActiveEle.nextElementSibling.focus();
+        currentActiveEle.nextElementSibling.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+          inline: "center",
+        });
         currentActiveEle = currentActiveEle.nextElementSibling;
       }
     } else if (key === 40) {
@@ -53,17 +58,15 @@
     // Update the active element for Down and Up arrow navigation
     if (nextElement) {
       currentActiveEle.removeAttribute("id"); // Remove active-item from the current element
-      currentActiveEle.removeAttribute("tabindex");
       nextElement.setAttribute("id", "active-item"); // Set active-item on the next element
-      nextElement.setAttribute("tabindex", "0");
       nextElement.focus();
+      nextElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
       currentActiveEle = nextElement;
     } else if (prevElement) {
       currentActiveEle.removeAttribute("id"); // Remove active-item from the current element
-      currentActiveEle.removeAttribute("tabindex");
       prevElement.setAttribute("id", "active-item"); // Set active-item on the previous element
-      prevElement.setAttribute("tabindex", "0");
       prevElement.focus();
+      prevElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
       currentActiveEle = prevElement;
     }
   });

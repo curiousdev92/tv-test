@@ -46,7 +46,6 @@ img {
 .selectable#active-item {
   border: 2px solid #fb7f05;
   transform: scale(1.05);
-  transition: 300ms transform ease-in-out;
 }
 
 /* Sidebar */
@@ -135,7 +134,6 @@ main {
   background-color: white;
   opacity: 0.3;
   border-radius: 14px;
-  transition: 300ms width;
 }
 .slider-container .dots > span:not(:last-child) {
   margin-left: 12px;
@@ -225,7 +223,6 @@ main {
   right: 0;
   top: 0;
   bottom: 0;
-  transition: 300ms all;
 }
 .quick-foods > article#active-item::before {
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
@@ -336,7 +333,6 @@ main {
   right: 0;
   top: 0;
   bottom: 0;
-  transition: 300ms all;
 }
 .suggestions > .suggestions-cards > article#active-item::before {
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));

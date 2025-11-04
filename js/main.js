@@ -129,7 +129,7 @@
       var recipeTitle = document.createElement("p");
       var recipeTime = document.createElement("span");
       recipeTitle.textContent = recipe.title;
-      recipeTime.textContent = `${recipe.cookingTime} دقیقه`;
+      recipeTime.innerHTML = `<i class='ic-cook-time-linear'></i> <span>${recipe.cookingTime} دقیقه</span>`;
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);
@@ -154,7 +154,7 @@
       var recipeTitle = document.createElement("p");
       var recipeTime = document.createElement("span");
       recipeTitle.textContent = recipe.title;
-      recipeTime.textContent = `${recipe.cookingTime} دقیقه`;
+      recipeTime.innerHTML = `<i class='ic-cook-time-linear'></i> ${recipe.cookingTime} دقیقه`;
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);

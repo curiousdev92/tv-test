@@ -100,6 +100,7 @@
     for (var i = 0; i < quickfoods.length; i++) {
       var recipe = quickfoods[i];
       var article = document.createElement("article");
+      article.className = "selectable";
       article.style.backgroundImage = `url(${recipe.img})`;
 
       // var p = document.createElement("p");
@@ -173,6 +174,7 @@
     for (var i = 0; i < foodSuggestions.length; i++) {
       var recipe = foodSuggestions[i];
       var article = document.createElement("article");
+      article.className = "selectable";
       article.style.backgroundImage = `url(${recipe.img})`;
       if (recipe.isPremium) article.classList.add("premium");
       suggestionsCardsContainer.appendChild(article);

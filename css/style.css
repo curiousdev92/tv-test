@@ -44,7 +44,9 @@ img {
   position: relative;
 }
 .selectable#active-item {
-  border: 4px solid #fb7f05;
+  border: 2px solid #fb7f05;
+  transform: scale(1.05);
+  transition: 300ms transform ease-in-out;
 }
 
 /* Sidebar */
@@ -95,6 +97,8 @@ main {
 .slider {
   display: flex;
   overflow: hidden;
+  padding: 20px;
+  margin: -20px;
   margin-bottom: 40px;
   position: relative;
 }
@@ -130,7 +134,7 @@ main {
   height: 12px;
   background-color: white;
   opacity: 0.3;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: 300ms width;
 }
 .slider-container .dots > span:not(:last-child) {
@@ -168,7 +172,7 @@ main {
   border: none;
 }
 .meals > .selectable#active-item > img {
-  border: 4px solid #fb7f05;
+  border: 2px solid #fb7f05;
 }
 
 /* Quick foods */
@@ -213,16 +217,18 @@ main {
 .quick-foods > article#active-item {
   border: none;
 }
-.quick-foods > article#active-item::before {
+.quick-foods > article::before {
   content: "";
-  /* opacity: 0.7;
-  background-color: black; */
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
+  background: linear-gradient(to bottom, transparent, transparent);
   position: absolute;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
+  transition: 300ms all;
+}
+.quick-foods > article#active-item::before {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
 }
 .quick-foods > article .recipe-info {
   display: none;
@@ -261,7 +267,7 @@ main {
   border-radius: 16px;
 }
 .banners img {
-  border-radius: 12px;
+  border-radius: 14px;
   display: block;
 }
 
@@ -279,6 +285,7 @@ main {
   line-height: 36px;
   padding-right: 10px;
   position: relative;
+  margin-bottom: 24px;
 }
 .suggestions > .suggestions-title::before {
   content: "";
@@ -293,8 +300,9 @@ main {
 .suggestions > .suggestions-cards {
   display: flex;
   overflow-x: hidden;
-  height: 320px;
-  margin-top: 24px;
+  height: 360px;
+  padding: 10px;
+  margin: -10px;
 }
 .suggestions .loading:not(:last-child),
 .suggestions article:not(:last-child) {
@@ -320,6 +328,41 @@ main {
   background-size: cover;
   background-position: center;
 }
+.suggestions > .suggestions-cards > article::before {
+  content: "";
+  background: linear-gradient(to bottom, transparent, transparent);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: 300ms all;
+}
+.suggestions > .suggestions-cards > article#active-item::before {
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
+}
+.suggestions > .suggestions-cards > article .recipe-info {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  padding: 24px;
+}
+.suggestions > .suggestions-cards > article .recipe-info > p {
+  font-weight: Bold;
+  font-size: 20px;
+  line-height: 28px;
+  margin-bottom: 10px;
+}
+.suggestions > .suggestions-cards > article .recipe-info > span {
+  font-size: 18px;
+  line-height: 28px;
+}
+.suggestions > .suggestions-cards > article#active-item .recipe-info {
+  display: block;
+}
 
 /* Categories */
 .categories {
@@ -329,7 +372,7 @@ main {
   border-radius: 16px;
 }
 .categories > article > img {
-  border-radius: 12px;
+  border-radius: 14px;
   display: block;
 }
 .categories > article:not(:last-child) {

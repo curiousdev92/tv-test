@@ -7,58 +7,72 @@
 
   var foodSuggestions = [
     {
-      title: "آش دوغ قزوین",
-      img: "images/food-suggestions/aash_doogh_qazvin_t_hese_tazegi.jpg",
+      title: "سالاد رژیمی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/diet-friendly-salad/diet_friendly_salad_t_hese_tazegi.jpg",
+      cookingTime: 70,
     },
     {
-      title: "چیزکیک توت‌فرنگی",
-      img: "images/food-suggestions/strawberry_cheesecake_t_hese_tazegi.jpg",
+      title: "بربسیل",
+      img: "https://statics.hesetazegi.com/files/images/recipes/barbasil/barbasil_t_hese_tazegi.jpg",
+      cookingTime: 190,
     },
     {
-      title: "آش سبزی شیرازی",
-      img: "images/food-suggestions/aash_e_sabzi_shiraz_t_hese_tazegi.jpg",
+      title: "کوفته کرمانشاهی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/kermanshahi-kofta/kermanshahi_kofta_t_hese_tazegi.jpg",
+      cookingTime: 60,
     },
     {
-      title: "قطایف",
-      img: "images/food-suggestions/qatayef_t_hese_tazegi.jpg",
+      title: "خورش کدوقرمز",
+      img: "https://statics.hesetazegi.com/files/images/recipes/butternut-squash-stew-bushehr/butternut_squash_stew_bushehr_t_hese_tazegi.jpg",
+      cookingTime: 100,
     },
     {
-      title: "خورش بِه اصفهان",
-      img: "images/food-suggestions/quince_stew_isfahan_t_hese_tazegi.jpg",
+      title: "فطایر گوشت و قارچ",
+      img: "https://statics.hesetazegi.com/files/images/recipes/meat-and-mushroom-fatayer/meat_and_mushroom_fatayer_t_hese_tazegi.jpg",
+      cookingTime: 45,
     },
     {
-      title: "آش ترش مازندران",
-      img: "images/food-suggestions/tershe_aash_mazandaran_t_hese_tazegi.jpg",
+      title: "خورش داوود پاشا",
+      img: "https://statics.hesetazegi.com/files/images/recipes/davood-pasha-stew/davood_pasha_stew_t_hese_tazegi.jpg",
+      cookingTime: 50,
     },
     {
-      title: "گراتن بادمجان و مرغ",
-      img: "images/food-suggestions/aubergine_and_chicken_gratin_t_hese_tazegi.jpg",
+      title: "میلک‌شیک پارادایس",
+      img: "https://statics.hesetazegi.com/files/images/recipes/paradise-milkshake/paradise_milkshake_t_hese_tazegi.jpg",
+      cookingTime: 5,
     },
     {
-      title: "ماهی قزل آلا با زعفران",
-      img: "images/food-suggestions/trout_with_saffron_t_hese_tazegi.jpg",
+      title: "کرپ سوخاری با خرما و گردو",
+      img: "https://statics.hesetazegi.com/files/images/recipes/date-and-walnut-fried-crepe/date_and_walnut_fried_crepe_t_hese_tazegi.jpg",
+      cookingTime: 40,
     },
     {
-      title: "قیمه بوشهری",
-      img: "images/food-suggestions/bushehri_gheimeh_t_hese_tazegi.jpg",
+      title: "شیرپلو تبریزی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/tabrizi-milk-pilau/tabrizi_milk_pilau_t_hese_tazegi.jpg",
+      cookingTime: 70,
     },
     {
-      title: "سالاد شاورما",
-      img: "images/food-suggestions/shawarma_salad_t_hese_tazegi.jpg",
+      title: "کوفته سوئدی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/swedish-kofta/swedish_kofta_t_hese_tazegi.jpg",
+      cookingTime: 45,
     },
     {
-      title: "سالاد پاییزی",
-      img: "images/food-suggestions/autumn_salad_t_hese_tazegi.jpg",
+      title: "لازانیا زیتون و گوجه‌فرنگی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/olive-and-tomato-lasagne/olive_and_tomato_lasagne_t_hese_tazegi.jpg",
+      cookingTime: 80,
     },
     {
-      title: "خورش ساق",
-      img: "images/food-suggestions/saagh_t_hese_tazegi.jpg",
+      title: "قنبرپلو شیرازی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/ghanbar-polo-shirazi/ghanbar_polo_shirazi_t_hese_tazegi.jpg",
+      cookingTime: 70,
     },
     {
-      title: "کرپ سوخاری با مرغ ",
-      img: "images/food-suggestions/chicken_and_mushroom_fried_crepe_t_hese_tazegi.jpg",
+      title: "آش غورابه",
+      img: "https://statics.hesetazegi.com/files/images/recipes/aash-ghoorabeh/aash_ghoorabeh_t_hese_tazegi.jpg",
+      cookingTime: 125,
     },
   ];
+
   var quickfoods = [
     {
       title: "فرنی گیاهی",
@@ -190,7 +204,16 @@
       var article = document.createElement("article");
       article.className = "selectable";
       article.style.backgroundImage = `url(${recipe.img})`;
+      var recipeInfoContainer = document.createElement("div");
+      recipeInfoContainer.className = "recipe-info";
+      var recipeTitle = document.createElement("p");
+      var recipeTime = document.createElement("span");
+      recipeTitle.textContent = recipe.title;
+      recipeTime.textContent = `${recipe.cookingTime} دقیقه`;
       if (recipe.isPremium) article.classList.add("premium");
+      recipeInfoContainer.appendChild(recipeTitle);
+      recipeInfoContainer.appendChild(recipeTime);
+      article.appendChild(recipeInfoContainer);
       suggestionsCardsContainer.appendChild(article);
     }
   }

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/home.css" />
     <link rel="stylesheet" href="./css/cooking-assistant.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
   </head>
   <body>
     <div id="app">
@@ -156,7 +157,26 @@
       </main>
 
       <!-- Profile Page -->
-      <main class="page-element" id="/profile" hidden>profile</main>
+      <main class="page-element" id="/profile" hidden>
+        <div class="top-gradient"></div>
+
+        <div class="info-container">
+          <div class="avatar">
+            <i class="ic-profile-linear"></i>
+          </div>
+          <p class="fullname">احسان مرادی</p>
+          <p class="phone">09123456789</p>
+
+          <div class="subscription-statement">
+            <span>وضعیت اشتراک:</span>
+            <span>بدون اشتراک</span>
+          </div>
+          <button class="btn-primary">خرید اشتراک</button>
+          <button class="btn-secondary">خروج از حساب کاربری</button>
+        </div>
+
+        <div class="demo-statement">این بخش به زودی در دسترس خواهد بود</div>
+      </main>
     </div>
 
     <script src="js/dpad.js" defer></script>

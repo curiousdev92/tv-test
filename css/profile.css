@@ -1,0 +1,92 @@
+main#\/profile {
+  background-color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-top: 76px;
+  z-index: 1;
+}
+
+.top-gradient {
+  background: linear-gradient(83.82deg, #298432 0%, #99a41b 100%);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 133px;
+  z-index: -1;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 604px;
+}
+.info-container > .avatar {
+  height: 107px;
+  width: 107px;
+  background-color: #f4f4f5;
+  margin-bottom: 16px;
+  border-radius: 300px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.info-container > .avatar > i {
+  font-size: 3.5rem;
+  color: #298432;
+}
+.info-container .fullname {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 32px;
+  color: #18181b;
+  margin-bottom: 8px;
+}
+.info-container .phone {
+  font-weight: lighter;
+  font-size: 20px;
+  line-height: 28px;
+  color: #535353;
+  margin-bottom: 24px;
+}
+.info-container .subscription-statement {
+  width: 604px;
+  border-radius: 16px;
+  padding: 24px 32px;
+  background-color: #fafafa;
+  border: 1px solid #d0d0d0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.info-container button {
+  cursor: pointer;
+  width: 240px;
+  border-radius: 16px;
+  padding: 14px 32px;
+}
+.info-container .btn-primary {
+  background: #298432;
+  margin-bottom: 24px;
+  color: white;
+}
+.info-container .btn-secondary {
+  background: #f3f3f3;
+  color: #f22323;
+}
+
+.demo-statement {
+  background-color: #fb7f05;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  padding: 1rem;
+}

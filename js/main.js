@@ -181,8 +181,10 @@
     function toggleVisibility(page) {
       if (page.id === route) {
         page.hidden = false;
+        page.style.display = "";
       } else {
         page.hidden = true;
+        page.style.display = "none";
       }
     }
   }

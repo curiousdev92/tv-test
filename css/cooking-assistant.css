@@ -1,0 +1,27 @@
+main#\/cooking-assistant {
+  background-color: #1c0c27;
+  position: relative;
+}
+
+.demo-images {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 24px;
+  right: 24px;
+  transform: translateY(-50%);
+}
+
+.demo-statement {
+  background-color: #fb7f05;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 36px;
+  text-align: center;
+  padding: 1rem;
+}

@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/font-face.css" />
     <link rel="stylesheet" href="./css/font-icon.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/cooking-assistant.css" />
   </head>
   <body>
     <div id="app">
@@ -45,7 +48,7 @@
       </aside>
 
       <!-- Home page -->
-      <main id="home" class="page-element">
+      <main class="page-element" id="/home">
         <!-- Top Slider Banner -->
         <div class="slider-container selectableRow">
           <div class="slider">
@@ -139,10 +142,21 @@
       </main>
 
       <!-- Cooking Assistant Page -->
-      <main id="cooking-assistant" class="page-element" hidden></main>
+      <main class="page-element" id="/cooking-assistant" hidden>
+        <div class="demo-images">
+          <div>
+            <img src="/images/cooking-assistant/demo-right.png" />
+          </div>
+          <div>
+            <img src="/images/cooking-assistant/demo-left.png" />
+          </div>
+        </div>
+
+        <div class="demo-statement">این بخش به زودی در دسترس خواهد بود</div>
+      </main>
 
       <!-- Profile Page -->
-      <main id="profile" class="page-element" hidden></main>
+      <main class="page-element" id="/profile" hidden>profile</main>
     </div>
 
     <script src="js/dpad.js" defer></script>

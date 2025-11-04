@@ -1,7 +1,4 @@
 (function () {
-  // var homePageElement = document.getElementById("home");
-  // var cookingAssistantPageElement = document.getElementById("cooking-assistant");
-  // var profilePageElement = document.getElementById("profile");
   var quickFoodsSection = document.getElementById("home-quick-foods");
   var suggestionsSection = document.getElementById("home-suggestions");
 
@@ -105,6 +102,7 @@
     var hash = window.location.hash || "#/home";
     var route = hash.replace("#", "") || "/";
     updateNavFocus(hash);
+    updatePageContent(route);
   }
 
   function loadquickFoods(search) {
@@ -138,62 +136,9 @@
       article.appendChild(recipeInfoContainer);
       quickFoodsSection.appendChild(article);
     }
-    // getJSON(
-    //   `https://apis8.hesetazegi.com/api/Recipe/list/${locale}?${search}`,
-    //   function (data) {
-    //     if (data.statusCode === 200 && data && data.data && data.data.records) {
-    //       quickFoodsSection.classList.add("loaded");
-    //       quickFoodsSection.textContent = "";
-    //       var img = document.createElement("img");
-    //       img.src = "images/home/quick-foods-banner.png";
-    //       img.width = 204.32;
-    //       img.height = 320;
-    //       quickFoodsSection.appendChild(img);
-
-    //       var recipes = data.data.records;
-    //       for (var i = 0; i < recipes.length; i++) {
-    //         var recipe = recipes[i];
-    //         var article = document.createElement("article");
-    //         article.style.backgroundImage = `url(${recipe.image.src})`;
-
-    //         // var p = document.createElement("p");
-    //         // p.textContent = recipe.title;
-    //         if (recipe.isPremium) article.classList.add("premium");
-    //         // article.appendChild(img);
-    //         // article.appendChild(p);
-    //         quickFoodsSection.appendChild(article);
-    //       }
-    //     }
-    //   },
-    //   function (err) {
-    //     console.log("Failed to load recipes:", err);
-    //   }
-    // );
   }
 
   function loadSuggestions(search) {
-    // getJSON(
-    //   `https://apis8.hesetazegi.com/api/Recipe/list/${locale}?${search}`,
-    //   function (data) {
-    //     if (data.statusCode === 200 && data && data.data && data.data.records) {
-    //       suggestionsSection.classList.add("loaded");
-    //       var suggestionsCardsContainer =
-    //         suggestionsSection.getElementsByClassName("suggestions-cards")[0];
-    //       suggestionsCardsContainer.textContent = "";
-    //       var recipes = data.data.records;
-    //       for (var i = 0; i < recipes.length; i++) {
-    //         var recipe = recipes[i];
-    //         var article = document.createElement("article");
-    //         article.style.backgroundImage = `url(${recipe.image.src})`;
-    //         if (recipe.isPremium) article.classList.add("premium");
-    //         suggestionsCardsContainer.appendChild(article);
-    //       }
-    //     }
-    //   },
-    //   function (err) {
-    //     console.log("Failed to load recipes:", err);
-    //   }
-    // );
     suggestionsSection.classList.add("loaded");
     var suggestionsCardsContainer =
       suggestionsSection.getElementsByClassName("suggestions-cards")[0];
@@ -225,6 +170,19 @@
         links[i].classList.add("focused");
       } else {
         links[i].classList.remove("focused");
+      }
+    }
+  }
+
+  function updatePageContent(route) {
+    var pages = Array.from(document.querySelectorAll(".page-element"));
+    pages.forEach(toggleVisibility);
+
+    function toggleVisibility(page) {
+      if (page.id === route) {
+        page.hidden = false;
+      } else {
+        page.hidden = true;
       }
     }
   }

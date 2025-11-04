@@ -1,18 +1,9 @@
 @font-face {
   font-family: IRANYekanXVFaNumVF;
-  font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/IRANYekanXFaNum-Light.woff") format("woff");
+  src: url("../fonts/IRANYekanXFaNum-Regular.woff") format("woff");
 }
 @font-face {
   font-family: IRANYekanXVFaNumVF;
-  font-style: normal;
   font-weight: bold;
-  src: url("../fonts/IRANYekanXFaNum-Medium.woff") format("woff");
-}
-@font-face {
-  font-family: IRANYekanXVFaNumVF;
-  font-style: normal;
-  font-weight: bolder;
-  src: url("../fonts/IRANYekanXFaNum-ExtraBold.woff") format("woff");
+  src: url("../fonts/IRANYekanXFaNum-Bold.woff") format("woff");
 }

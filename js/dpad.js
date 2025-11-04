@@ -2,7 +2,7 @@
   function scrollIntoFocusedElement() {
     document
       .getElementById("active-item")
-      .scrollIntoView({ inline: "center", block: "center", behavior: "smooth" });
+      .scrollIntoView({ inline: "center", block: "end", behavior: "smooth" });
   }
 
   document.addEventListener("keydown", function (e) {

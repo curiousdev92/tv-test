@@ -1,10 +1,10 @@
 (function () {
-  var homePageElement = document.getElementById("home");
-  var cookingAssistantPageElement = document.getElementById("cooking-assistant");
-  var profilePageElement = document.getElementById("profile");
+  // var homePageElement = document.getElementById("home");
+  // var cookingAssistantPageElement = document.getElementById("cooking-assistant");
+  // var profilePageElement = document.getElementById("profile");
   var quickFoodsSection = document.getElementById("home-quick-foods");
   var suggestionsSection = document.getElementById("home-suggestions");
-  var locale = "fa";
+
   var foodSuggestions = [
     {
       title: "آش دوغ قزوین",
@@ -93,7 +93,7 @@
     quickFoodsSection.textContent = "";
     var img = document.createElement("img");
     img.src = "images/home/quick-foods-banner.png";
-    img.width = 204.32;
+    img.width = 204;
     img.height = 320;
     quickFoodsSection.appendChild(img);
 
@@ -190,10 +190,6 @@
     }
   }
 
-  function clearLoadings(parent) {
-    parent.querySelectorAll(".loading").forEach((el) => el.remove());
-  }
-
   function getJSON(url, callback, errorCallback) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", url, true);
@@ -229,7 +225,6 @@
   renderRoute();
   loadquickFoods("filter=tg-fast&srt=srt-random&page=1&limit=5");
   loadSuggestions("srt=srt-variety&limit=13");
-  console.log("hi");
 
   // Api calls
 })();

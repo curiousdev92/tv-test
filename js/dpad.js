@@ -1,12 +1,15 @@
 (function () {
-  function focusElement(index) {
-    document.getElementById("active-item").focus();
+  function scrollIntoFocusedElement() {
+    document
+      .getElementById("active-item")
+      .scrollIntoView({ inline: "center", block: "center", behavior: "smooth" });
   }
 
   document.addEventListener("keydown", function (e) {
     var key = e.keyCode;
-    var activeEle = document.getElementById("active-item");
-    console.log(e.target);
+    var currentActiveEle = document.getElementById("active-item");
+    console.log("currentActiveEle", currentActiveEle);
+
     if (key === 37) {
       console.log("left");
     } else if (key === 38) {
@@ -19,6 +22,6 @@
   });
 
   document.addEventListener("DOMContentLoaded", function () {
-    focusElement("active-item");
+    scrollIntoFocusedElement();
   });
 })();

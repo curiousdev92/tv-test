@@ -7,29 +7,19 @@
 
   document.addEventListener("keydown", function (e) {
     var key = e.keyCode;
+    var currentActiveEle = document.querySelector("#active-item");
+    if (!currentActiveEle) return; // If no active element, exit
+
     var currentRow = currentActiveEle.closest(".selectableRow");
     var allRows = Array.from(document.querySelectorAll(".selectableRow"));
     var currentIndex = allRows.indexOf(currentRow);
     var nextElement, prevElement;
 
-    if (key === 37) {
-      // Left ArrowKey
-      if (currentActiveEle.nextElementSibling) {
-        currentActiveEle.removeAttribute("id");
-        currentActiveEle.removeAttribute("tabindex");
-        currentActiveEle.nextElementSibling.setAttribute("id", "active-item");
-        currentActiveEle.nextElementSibling.setAttribute("tabindex", "0");
-        currentActiveEle.nextElementSibling.focus();
-        currentActiveEle = currentActiveEle.nextElementSibling;
-      }
-    } else if (key === 38) {
-      // Up ArrowKey
-      if (currentIndex > 0) {
-        prevElement = allRows[currentIndex - 1].querySelector(".selectable");
-      }
-    } else if (key === 39) {
-      // Right ArrowKey
-      if (currentActiveEle.previousElementSibling) {
+    if (key === 39) {
+      if (
+        currentActiveEle.previousElementSibling &&
+        currentActiveEle.previousElementSibling.classList.contains("selectable")
+      ) {
         currentActiveEle.removeAttribute("id");
         currentActiveEle.removeAttribute("tabindex");
         currentActiveEle.previousElementSibling.setAttribute("id", "active-item");
@@ -37,12 +27,30 @@
         currentActiveEle.previousElementSibling.focus();
         currentActiveEle = currentActiveEle.previousElementSibling;
       }
+    } else if (key === 38) {
+      if (currentIndex > 0) {
+        prevElement = allRows[currentIndex - 1].querySelector(".selectable");
+      }
+    } else if (key === 37) {
+      if (
+        currentActiveEle.nextElementSibling &&
+        currentActiveEle.nextElementSibling.classList.contains("selectable")
+      ) {
+        currentActiveEle.removeAttribute("id");
+        currentActiveEle.removeAttribute("tabindex");
+        currentActiveEle.nextElementSibling.setAttribute("id", "active-item");
+        currentActiveEle.nextElementSibling.setAttribute("tabindex", "0");
+        currentActiveEle.nextElementSibling.focus();
+        currentActiveEle = currentActiveEle.nextElementSibling;
+      }
     } else if (key === 40) {
-      // Down ArrowKey
+      // Move to the next row, find the first selectable element
       if (currentIndex < allRows.length - 1) {
         nextElement = allRows[currentIndex + 1].querySelector(".selectable");
       }
     }
+
+    // Update the active element for Down and Up arrow navigation
     if (nextElement) {
       currentActiveEle.removeAttribute("id"); // Remove active-item from the current element
       currentActiveEle.removeAttribute("tabindex");

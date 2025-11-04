@@ -1,6 +1,12 @@
 @font-face {
   font-family: IRANYekanXVFaNumVF;
+  font-weight: lighter;
   src: url("../fonts/IRANYekanXFaNum-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: IRANYekanXVFaNumVF;
+  font-weight: normal;
+  src: url("../fonts/IRANYekanXFaNum-Medium.woff") format("woff");
 }
 @font-face {
   font-family: IRANYekanXVFaNumVF;

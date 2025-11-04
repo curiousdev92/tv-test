@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "font-icon";
+  src: url("../fonts/icons/font-icon.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
+
+[class^="ic-"],
+[class*=" ic-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "font-icon" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ic-cook-level-linear:before {
+  content: "\e900";
+}
+.ic-cook-time-linear:before {
+  content: "\e901";
+}
+.ic-sensitive-badge-bold:before {
+  content: "\e902";
+}
+.ic-protein-boldsvg:before {
+  content: "\e903";
+}
+.ic-profile-linear:before {
+  content: "\e904";
+}
+.ic-profile-bold:before {
+  content: "\e905";
+}
+.ic-meal-badge-bold:before {
+  content: "\e906";
+}
+.ic-fat-bold:before {
+  content: "\e907";
+}
+.ic-double-check:before {
+  content: "\e908";
+}
+.ic-cooking-assistant-linear:before {
+  content: "\e909";
+}
+.ic-cooking-assistant-bold:before {
+  content: "\e90a";
+}
+.ic-chef-linear:before {
+  content: "\e90b";
+}
+.ic-carbs-bold:before {
+  content: "\e90c";
+}
+.ic-book-linear:before {
+  content: "\e90d";
+}
+.ic-book-bold:before {
+  content: "\e90e";
+}

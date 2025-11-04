@@ -61,24 +61,29 @@
   ];
   var quickfoods = [
     {
-      title: "سمبوسه گوشت",
-      img: "images/quick-foods/meat_sambusa_t_hese_tazegi.jpg",
+      title: "فرنی گیاهی",
+      img: "https://statics.hesetazegi.com/files/image/recipe/fr-vegetarian-fereni/vegetarian_fereni_t_hese_tazegi.jpg",
+      cookingTime: 5,
     },
     {
-      title: "شنیتسل ماهی",
-      img: "images/quick-foods/fish_schnitzel.jpg",
+      title: "سالاد تبوله",
+      img: "https://statics.hesetazegi.com/files/images/recipes/tabbouleh/tabbouleh_t_hese_tazegi.jpg",
+      cookingTime: 15,
     },
     {
-      title: "املت سوسیس و سیب زمینی",
-      img: "images/quick-foods/potato_and_sausage_omelette_t_hese_tazegi.jpg",
+      title: "سیب و موز عسلی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/apple-and-bannana-cereal/apple_and_bannana_cereal_t_hese_tazegi.jpg",
+      cookingTime: 10,
     },
     {
-      title: "میلک‌شیک موکاخامه‌ای",
-      img: "images/quick-foods/creamymoca_milkshake_t_hese_tazegi.jpg",
+      title: "املت پیتزایی",
+      img: "https://statics.hesetazegi.com/files/images/recipes/pizza-omelette/pizza_omelette_t_hese_tazegi.jpg",
+      cookingTime: 20,
     },
     {
-      title: "نان و کره و مربا",
-      img: "images/quick-foods/bread_butter_and_jam_t_hese_tazegi.jpg",
+      title: "املت هویج",
+      img: "https://statics.hesetazegi.com/files/images/recipes/carrot-omelette/carrot_omelette_t_hese_tazegi.jpg",
+      cookingTime: 20,
     },
   ];
 
@@ -91,23 +96,32 @@
   function loadquickFoods(search) {
     quickFoodsSection.classList.add("loaded");
     quickFoodsSection.textContent = "";
+    var imageContainer = document.createElement("div");
+    imageContainer.style.minWidth = "204px";
+    imageContainer.style.height = "320px";
+    imageContainer.style.marginLeft = "16px";
     var img = document.createElement("img");
     img.src = "images/home/quick-foods-banner.png";
     img.width = 204;
     img.height = 320;
-    quickFoodsSection.appendChild(img);
+    imageContainer.appendChild(img);
+    quickFoodsSection.appendChild(imageContainer);
 
     for (var i = 0; i < quickfoods.length; i++) {
       var recipe = quickfoods[i];
       var article = document.createElement("article");
       article.className = "selectable";
       article.style.backgroundImage = `url(${recipe.img})`;
-
-      // var p = document.createElement("p");
-      // p.textContent = recipe.title;
+      var recipeInfoContainer = document.createElement("div");
+      recipeInfoContainer.className = "recipe-info";
+      var recipeTitle = document.createElement("p");
+      var recipeTime = document.createElement("span");
+      recipeTitle.textContent = recipe.title;
+      recipeTime.textContent = `${recipe.cookingTime} دقیقه`;
       if (recipe.isPremium) article.classList.add("premium");
-      // article.appendChild(img);
-      // article.appendChild(p);
+      recipeInfoContainer.appendChild(recipeTitle);
+      recipeInfoContainer.appendChild(recipeTime);
+      article.appendChild(recipeInfoContainer);
       quickFoodsSection.appendChild(article);
     }
     // getJSON(

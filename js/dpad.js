@@ -1,21 +1,90 @@
 document.addEventListener("DOMContentLoaded", function () {
   onKeyDown();
-  var nextElement, prevElement, currentElement;
+  var nextElement,
+    prevElement,
+    lastActiveElement,
+    currentElement = document.getElementById("active-item"),
+    navMenuElement = document.querySelector(".sidebar-nav"),
+    allRows = Array.from(document.querySelectorAll(".selectableRow:not(.sidebar-nav)")),
+    isInNavMenu = false;
+  var hash = window.location.hash || "#/home";
+  var route = hash.replace("#", "") || "/";
 
   function handleArrowLeft() {
-    console.log("handleArrowLeft");
+    if (isInNavMenu) {
+      var hash = window.location.hash || "#/home";
+      var route = hash.replace("#", "") || "/";
+      if (route !== "/home") return;
+      // Jump to first
+      nextElement = document.querySelector(".last-active");
+      currentElement.removeAttribute("id");
+      nextElement.setAttribute("id", "active-item");
+      nextElement.focus();
+      currentElement = nextElement;
+    }
+
+    if (nextElement && nextElement.classList.contains("selectable")) {
+      currentElement.removeAttribute("id");
+      nextElement.setAttribute("id", "active-item");
+      nextElement.focus();
+      currentElement = nextElement;
+    }
   }
 
   function handleArrowUp() {
-    console.log("handleArrowUp");
+    if (isInNavMenu && prevElement && prevElement.classList.contains("selectable")) {
+      currentElement.removeAttribute("id");
+      prevElement.setAttribute("id", "active-item");
+      prevElement.focus();
+      currentElement = prevElement;
+    } else {
+      var currentRow = currentElement.closest(".selectableRow");
+      var currentIndex = allRows.indexOf(currentRow);
+      if (currentIndex > 0) {
+        prevElement = allRows[currentIndex - 1].querySelector(".selectable");
+        currentElement.removeAttribute("id");
+        prevElement.setAttribute("id", "active-item");
+        prevElement.focus();
+        currentElement = prevElement;
+      }
+    }
   }
 
   function handleArrowRight() {
-    console.log("handleArrowRight");
+    if (isInNavMenu) return;
+    if (prevElement && prevElement.classList.contains("selectable")) {
+      currentElement.removeAttribute("id");
+      prevElement.setAttribute("id", "active-item");
+      prevElement.focus();
+      currentElement = prevElement;
+    } else {
+      // Jump to navbar
+      prevElement = navMenuElement.querySelectorAll(".selectable")[0];
+      currentElement.removeAttribute("id");
+      currentElement.classList.add("last-active");
+      prevElement.setAttribute("id", "active-item");
+      prevElement.focus();
+      currentElement = prevElement;
+    }
   }
 
   function handleArrowDown() {
-    console.log("handleArrowDown");
+    if (isInNavMenu && nextElement && nextElement.classList.contains("selectable")) {
+      currentElement.removeAttribute("id");
+      nextElement.setAttribute("id", "active-item");
+      nextElement.focus();
+      currentElement = nextElement;
+    } else {
+      var currentRow = currentElement.closest(".selectableRow");
+      var currentIndex = allRows.indexOf(currentRow);
+      if (currentIndex < allRows.length - 1) {
+        nextElement = allRows[currentIndex + 1].querySelector(".selectable");
+        currentElement.removeAttribute("id");
+        nextElement.setAttribute("id", "active-item");
+        nextElement.focus();
+        currentElement = nextElement;
+      }
+    }
   }
 
   function onKeyDown() {
@@ -28,7 +97,18 @@ document.addEventListener("DOMContentLoaded", function () {
         39: handleArrowRight,
         40: handleArrowDown,
       };
+      if (!currentElement) return;
 
+      if (currentElement.closest(".selectableRow").classList.contains("sidebar-nav")) {
+        isInNavMenu = true;
+      } else {
+        isInNavMenu = false;
+        lastActiveElement = document.querySelector(".last-active");
+        if (lastActiveElement) lastActiveElement.classList.remove("last-active");
+      }
+
+      nextElement = currentElement.nextElementSibling;
+      prevElement = currentElement.previousElementSibling;
       if (keyFuncs[key]) keyFuncs[key]();
     });
   }

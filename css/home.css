@@ -290,3 +290,11 @@
 .categories > article:not(:last-child) {
   margin-left: 24px;
 }
+
+.leveler {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+}

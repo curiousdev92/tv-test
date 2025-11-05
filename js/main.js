@@ -133,10 +133,11 @@
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);
-      article.setAttribute("role", "button");
       article.setAttribute("data-route", "#/pdp");
-      article.classList.add("nav-link");
       article.appendChild(recipeInfoContainer);
+      var leveler = document.createElement("div");
+      leveler.classList.add("leveler");
+      article.appendChild(leveler);
       quickFoodsSection.appendChild(article);
     }
     updateLinks();
@@ -162,10 +163,11 @@
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);
-      article.setAttribute("role", "button");
       article.setAttribute("data-route", "#/pdp");
-      article.classList.add("nav-link");
       article.appendChild(recipeInfoContainer);
+      var leveler = document.createElement("div");
+      leveler.classList.add("leveler");
+      article.appendChild(leveler);
       suggestionsCardsContainer.appendChild(article);
     }
     updateLinks();
@@ -197,29 +199,28 @@
     }
   }
 
-  function getJSON(url, callback, errorCallback) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-        if (xhr.status >= 200 && xhr.status < 300) {
-          try {
-            var data = JSON.parse(xhr.responseText);
-            callback(data);
-          } catch (err) {
-            if (errorCallback) errorCallback(err);
-          }
-        } else {
-          if (errorCallback) errorCallback(new Error("Request failed: " + xhr.status));
-        }
-      }
-    };
-    xhr.send();
-  }
+  // function getJSON(url, callback, errorCallback) {
+  //   var xhr = new XMLHttpRequest();
+  //   xhr.open("GET", url, true);
+  //   xhr.onreadystatechange = function () {
+  //     if (xhr.readyState === 4) {
+  //       if (xhr.status >= 200 && xhr.status < 300) {
+  //         try {
+  //           var data = JSON.parse(xhr.responseText);
+  //           callback(data);
+  //         } catch (err) {
+  //           if (errorCallback) errorCallback(err);
+  //         }
+  //       } else {
+  //         if (errorCallback) errorCallback(new Error("Request failed: " + xhr.status));
+  //       }
+  //     }
+  //   };
+  //   xhr.send();
+  // }
 
   function updateLinks() {
     var navButtons = document.querySelectorAll(".nav-link");
-    console.log(navButtons);
     for (var i = 0; i < navButtons.length; i++) {
       navButtons[i].onclick = function (e) {
         var route = this.getAttribute("data-route");

@@ -10,7 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function manualVerticalScrollIntoView(el) {
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    var leveler = el.querySelector(".leveler");
+    if (leveler) {
+      leveler.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    } else {
+      el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
 
     // // find nearest scrollable container
     // var container = el.closest(".page-element, .slider-container, .sidebar");
@@ -39,7 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function manualHorizontalScrollIntoView(el, direction) {
     if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    var leveler = el.querySelector(".leveler");
+    if (leveler) {
+      leveler.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    } else {
+      el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    }
+
     // var container;
     // el.scrollIntoView({ behavior: "instant" });
     // if (el.classList.contains("slider-item")) {
@@ -182,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleClick() {
-    console.log(currentElement.getAttribute("data-route"));
     if (!currentElement.getAttribute("data-route")) {
       window.location.hash = "#/pdp";
     }

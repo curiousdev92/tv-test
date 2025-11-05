@@ -10,25 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function manualVerticalScrollIntoView(el) {
     if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
 
-    // find nearest scrollable container
-    var container = el.closest(".page-element, .slider-container, .sidebar");
-    if (!container) container = document.scrollingElement || document.body;
+    // // find nearest scrollable container
+    // var container = el.closest(".page-element, .slider-container, .sidebar");
+    // if (!container) container = document.scrollingElement || document.body;
 
-    // Center element vertically in container
-    var containerHeight = container.clientHeight;
-    var elTop = el.offsetTop - container.offsetTop;
-    var elHeight = el.offsetHeight;
+    // // Center element vertically in container
+    // var containerHeight = container.clientHeight;
+    // var elTop = el.offsetTop - container.offsetTop;
+    // var elHeight = el.offsetHeight;
 
-    // Calculate scrollTop so the element is vertically centered
-    var targetScrollTop = elTop - containerHeight / 2 + elHeight / 2;
+    // // Calculate scrollTop so the element is vertically centered
+    // var targetScrollTop = elTop - containerHeight / 2 + elHeight / 2;
 
-    // Clamp between 0 and max scrollable height
-    var maxScrollTop = container.scrollHeight - containerHeight;
-    if (targetScrollTop < 0) targetScrollTop = 0;
-    if (targetScrollTop > maxScrollTop) targetScrollTop = maxScrollTop;
+    // // Clamp between 0 and max scrollable height
+    // var maxScrollTop = container.scrollHeight - containerHeight;
+    // if (targetScrollTop < 0) targetScrollTop = 0;
+    // if (targetScrollTop > maxScrollTop) targetScrollTop = maxScrollTop;
 
-    container.scrollTop = targetScrollTop;
+    // container.scrollTop = targetScrollTop;
   }
 
   /**
@@ -38,18 +39,20 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   function manualHorizontalScrollIntoView(el, direction) {
     if (!el) return;
-    var container;
-    if (el.classList.contains("slider-item")) {
-      container = el.parentElement;
-    } else {
-      container = el.closest(".slider, .selectableRow");
-    }
-    console.log(container, el.clientWidth + 16);
-    if (direction === "left") {
-      container.scrollLeft -= el.clientWidth + 16;
-    } else {
-      container.scrollLeft += el.clientWidth + 16;
-    }
+    el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+    // var container;
+    // el.scrollIntoView({ behavior: "instant" });
+    // if (el.classList.contains("slider-item")) {
+    //   container = el.parentElement;
+    // } else {
+    //   container = el.closest(".slider, .selectableRow");
+    // }
+    // console.log(container, el.clientWidth + 16);
+    // if (direction === "left") {
+    //   container.scrollLeft -= el.clientWidth + 16;
+    // } else {
+    //   container.scrollLeft += el.clientWidth + 16;
+    // }
 
     // // Center element horizontally in container
     // var containerWidth = container.clientWidth;

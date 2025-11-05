@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
     navMenuElement = document.querySelector(".sidebar-nav"),
     allRows = Array.from(document.querySelectorAll(".selectableRow:not(.sidebar-nav)")),
     isInNavMenu = false;
-  var hash = window.location.hash || "#/home";
-  var route = hash.replace("#", "") || "/";
 
   function handleArrowLeft() {
     if (isInNavMenu) {

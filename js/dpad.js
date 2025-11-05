@@ -8,6 +8,74 @@ document.addEventListener("DOMContentLoaded", function () {
     allRows = Array.from(document.querySelectorAll(".selectableRow:not(.sidebar-nav)")),
     isInNavMenu = false;
 
+  function manualVerticalScrollIntoView(el) {
+    if (!el) return;
+
+    // find nearest scrollable container
+    var container = el.closest(".page-element, .slider-container, .sidebar");
+    if (!container) container = document.scrollingElement || document.body;
+
+    // Center element vertically in container
+    var containerHeight = container.clientHeight;
+    var elTop = el.offsetTop - container.offsetTop;
+    var elHeight = el.offsetHeight;
+
+    // Calculate scrollTop so the element is vertically centered
+    var targetScrollTop = elTop - containerHeight / 2 + elHeight / 2;
+
+    // Clamp between 0 and max scrollable height
+    var maxScrollTop = container.scrollHeight - containerHeight;
+    if (targetScrollTop < 0) targetScrollTop = 0;
+    if (targetScrollTop > maxScrollTop) targetScrollTop = maxScrollTop;
+
+    container.scrollTop = targetScrollTop;
+  }
+
+  /**
+   *
+   * @param {HTMLElement} el
+   * @returns
+   */
+  function manualHorizontalScrollIntoView(el, direction) {
+    if (!el) return;
+    var container;
+    if (el.classList.contains("slider-item")) {
+      container = el.parentElement;
+    } else {
+      container = el.closest(".slider, .selectableRow");
+    }
+    console.log(container, el.clientWidth + 16);
+    if (direction === "left") {
+      container.scrollLeft -= el.clientWidth + 16;
+    } else {
+      container.scrollLeft += el.clientWidth + 16;
+    }
+
+    // // Center element horizontally in container
+    // var containerWidth = container.clientWidth;
+    // var elLeft = el.offsetLeft - container.offsetLeft;
+    // var elWidth = el.offsetWidth;
+
+    // // Calculate scrollLeft so the element is horizontally centered
+    // var targetScrollLeft = elLeft - containerWidth / 2 + elWidth / 2;
+
+    // // Handle RTL (reverse scroll direction)
+    // var dir = "ltr";
+    // try {
+    //   dir = window.getComputedStyle(container).direction || "ltr";
+    // } catch (e) {}
+    // if (dir === "rtl") {
+    //   targetScrollLeft = -targetScrollLeft;
+    // }
+
+    // // Clamp between 0 and max scrollable width
+    // var maxScrollLeft = container.scrollWidth - containerWidth;
+    // if (targetScrollLeft < 0) targetScrollLeft = 0;
+    // if (targetScrollLeft > maxScrollLeft) targetScrollLeft = maxScrollLeft;
+    // console.log({ targetScrollLeft });
+    // container.scrollLeft = targetScrollLeft;
+  }
+
   function handleArrowLeft() {
     if (isInNavMenu) {
       var hash = window.location.hash || "#/home";
@@ -18,7 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
-      nextElement.scrollIntoView();
+      // nextElement.scrollIntoView();
+      manualHorizontalScrollIntoView(nextElement, "left");
       currentElement = nextElement;
     }
 
@@ -26,8 +95,13 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
-      nextElement.scrollIntoView();
+      // nextElement.scrollIntoView();
+      manualHorizontalScrollIntoView(nextElement, "left");
       currentElement = nextElement;
+
+      // handle Dots
+      var isInSlider = nextElement.closest(".selectableRow").classList.contains("slider-container");
+      if (isInSlider) updateDots();
     }
   }
 
@@ -36,7 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
-      prevElement.scrollIntoView();
+      // prevElement.scrollIntoView();
+      manualVerticalScrollIntoView(prevElement);
       currentElement = prevElement;
     } else {
       var currentRow = currentElement.closest(".selectableRow");
@@ -46,7 +121,8 @@ document.addEventListener("DOMContentLoaded", function () {
         currentElement.removeAttribute("id");
         prevElement.setAttribute("id", "active-item");
         prevElement.focus();
-        prevElement.scrollIntoView();
+        // prevElement.scrollIntoView();
+        manualVerticalScrollIntoView(prevElement);
         currentElement = prevElement;
       }
     }
@@ -54,12 +130,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function handleArrowRight() {
     if (isInNavMenu) return;
+
     if (prevElement && prevElement.classList.contains("selectable")) {
       currentElement.removeAttribute("id");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
-      prevElement.scrollIntoView();
+      // prevElement.scrollIntoView();
+      manualHorizontalScrollIntoView(prevElement, "right");
       currentElement = prevElement;
+
+      // handle Dots
+      var isInSlider = prevElement.closest(".selectableRow").classList.contains("slider-container");
+      if (isInSlider) updateDots();
     } else {
       // Jump to navbar
       prevElement = navMenuElement.querySelectorAll(".selectable")[0];
@@ -67,7 +149,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.classList.add("last-active");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
-      prevElement.scrollIntoView();
+      // prevElement.scrollIntoView();
+      manualHorizontalScrollIntoView(prevElement, "right");
       currentElement = prevElement;
     }
   }
@@ -77,7 +160,8 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
-      nextElement.scrollIntoView();
+      // nextElement.scrollIntoView();
+      manualVerticalScrollIntoView(nextElement);
       currentElement = nextElement;
     } else {
       var currentRow = currentElement.closest(".selectableRow");
@@ -87,7 +171,8 @@ document.addEventListener("DOMContentLoaded", function () {
         currentElement.removeAttribute("id");
         nextElement.setAttribute("id", "active-item");
         nextElement.focus();
-        nextElement.scrollIntoView();
+        // nextElement.scrollIntoView();
+        manualVerticalScrollIntoView(nextElement);
         currentElement = nextElement;
       }
     }
@@ -117,5 +202,12 @@ document.addEventListener("DOMContentLoaded", function () {
       prevElement = currentElement.previousElementSibling;
       if (keyFuncs[key]) keyFuncs[key]();
     });
+  }
+
+  function updateDots() {
+    var dotsContainer = document.querySelector(".dots");
+    var currentRow = currentElement.closest(".selectableRow");
+    var allCurrentSelectables = Array.from(currentRow.querySelectorAll(".selectable"));
+    var sliderIndex = allCurrentSelectables.indexOf(currentElement);
   }
 });

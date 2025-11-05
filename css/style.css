@@ -13,6 +13,7 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   outline: none;
+  scroll-behavior: smooth;
 }
 
 body {

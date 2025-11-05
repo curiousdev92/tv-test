@@ -1,7 +1,7 @@
 /* Top Slider */
 .slider {
   display: flex;
-  overflow: hidden;
+  overflow: auto;
   padding: 20px;
   margin: -20px;
   margin-bottom: 40px;
@@ -30,7 +30,8 @@
   background: rgba(0, 0, 0, 0.3);
   border-radius: 32px;
   padding: 8px;
-  display: flex;
+  /* display: flex; */
+  display: none;
   right: 50%;
   transform: translateX(50%);
 }
@@ -87,7 +88,7 @@
   margin-bottom: 40px;
   padding: 24px;
   display: flex;
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 .quick-foods > img {
   margin-left: 16px;
@@ -210,7 +211,7 @@
 }
 .suggestions > .suggestions-cards {
   display: flex;
-  overflow-x: hidden;
+  overflow-x: auto;
   height: 360px;
   padding: 10px;
   margin: -10px;

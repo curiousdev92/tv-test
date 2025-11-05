@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
+      nextElement.scrollIntoView();
       currentElement = nextElement;
     }
 
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
+      nextElement.scrollIntoView();
       currentElement = nextElement;
     }
   }
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
+      prevElement.scrollIntoView();
       currentElement = prevElement;
     } else {
       var currentRow = currentElement.closest(".selectableRow");
@@ -45,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentElement.removeAttribute("id");
         prevElement.setAttribute("id", "active-item");
         prevElement.focus();
+        prevElement.scrollIntoView();
         currentElement = prevElement;
       }
     }
@@ -56,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
+      prevElement.scrollIntoView();
       currentElement = prevElement;
     } else {
       // Jump to navbar
@@ -64,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.classList.add("last-active");
       prevElement.setAttribute("id", "active-item");
       prevElement.focus();
+      prevElement.scrollIntoView();
       currentElement = prevElement;
     }
   }
@@ -73,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       currentElement.removeAttribute("id");
       nextElement.setAttribute("id", "active-item");
       nextElement.focus();
+      nextElement.scrollIntoView();
       currentElement = nextElement;
     } else {
       var currentRow = currentElement.closest(".selectableRow");
@@ -82,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
         currentElement.removeAttribute("id");
         nextElement.setAttribute("id", "active-item");
         nextElement.focus();
+        nextElement.scrollIntoView();
         currentElement = nextElement;
       }
     }

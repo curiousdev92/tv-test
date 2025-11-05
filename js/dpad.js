@@ -182,6 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleClick() {
+    console.log(currentElement.getAttribute("data-route"));
+    if (!currentElement.getAttribute("data-route")) {
+      window.location.hash = "#/pdp";
+    }
     currentElement.click();
   }
 

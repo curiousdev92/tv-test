@@ -61,7 +61,7 @@ main#\/profile {
   justify-content: space-between;
   margin-bottom: 24px;
 }
-.info-container button {
+.info-container div {
   cursor: pointer;
   width: 240px;
   border-radius: 16px;

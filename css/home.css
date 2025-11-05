@@ -1,17 +1,18 @@
 /* Top Slider */
 .slider {
   display: flex;
-  overflow: auto;
+  overflow: hidden;
   padding: 20px;
   margin: -20px;
   margin-bottom: 40px;
   position: relative;
 }
 .slider .slider-item {
-  min-width: 50%;
+  min-width: 40%;
   border-radius: 16px;
   overflow: hidden;
   width: 50%;
+  max-width: 747px;
 }
 .slider img {
   display: block;

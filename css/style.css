@@ -55,3 +55,7 @@ main {
   padding: 24px;
   overflow: hidden;
 }
+
+.page-element {
+  position: relative;
+}

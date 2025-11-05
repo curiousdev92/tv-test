@@ -133,9 +133,13 @@
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);
+      article.setAttribute("role", "button");
+      article.setAttribute("data-route", "#/pdp");
+      article.classList.add("nav-link");
       article.appendChild(recipeInfoContainer);
       quickFoodsSection.appendChild(article);
     }
+    updateLinks();
   }
 
   function loadSuggestions(search) {
@@ -158,9 +162,13 @@
       if (recipe.isPremium) article.classList.add("premium");
       recipeInfoContainer.appendChild(recipeTitle);
       recipeInfoContainer.appendChild(recipeTime);
+      article.setAttribute("role", "button");
+      article.setAttribute("data-route", "#/pdp");
+      article.classList.add("nav-link");
       article.appendChild(recipeInfoContainer);
       suggestionsCardsContainer.appendChild(article);
     }
+    updateLinks();
   }
 
   function updateNavFocus(activeHash) {
@@ -209,16 +217,21 @@
     xhr.send();
   }
 
+  function updateLinks() {
+    var navButtons = document.querySelectorAll(".nav-link");
+    console.log(navButtons);
+    for (var i = 0; i < navButtons.length; i++) {
+      navButtons[i].onclick = function (e) {
+        var route = this.getAttribute("data-route");
+        window.location.hash = route;
+      };
+    }
+  }
+
   // Event listeners
   window.addEventListener("hashchange", renderRoute);
 
-  var navButtons = document.getElementsByClassName("nav-link");
-  for (var i = 0; i < navButtons.length; i++) {
-    navButtons[i].onclick = function (e) {
-      var route = this.getAttribute("data-route");
-      window.location.hash = route;
-    };
-  }
+  updateLinks();
 
   // Initial load
   renderRoute();

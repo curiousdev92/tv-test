@@ -181,6 +181,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function handleClick() {
+    currentElement.click();
+  }
+
   function onKeyDown() {
     document.addEventListener("keydown", function (e) {
       var key = e.keyCode;
@@ -190,6 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
         38: handleArrowUp,
         39: handleArrowRight,
         40: handleArrowDown,
+        13: handleClick,
       };
       if (!currentElement) return;
 

@@ -89,7 +89,7 @@
   margin-bottom: 40px;
   padding: 24px;
   display: flex;
-  overflow-x: auto;
+  overflow: hidden;
 }
 .quick-foods > img {
   margin-left: 16px;
@@ -212,7 +212,7 @@
 }
 .suggestions > .suggestions-cards {
   display: flex;
-  overflow-x: auto;
+  overflow: hidden;
   height: 360px;
   padding: 10px;
   margin: -10px;
